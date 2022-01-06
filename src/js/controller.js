@@ -9,11 +9,6 @@ import bookmarksView from "./views/bookmarksView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-// Parcel
-/* if (module.hot) {
-    module.hot.accept();
-} */
-
 const controlRecipes = async function() {
     try {
         // Retrieving id from hash
@@ -91,7 +86,12 @@ const controlAddBookmark = function() {
     bookmarksView.render(model.state.bookmarks);
 };
 
+const controlBookmarks = function() {
+    bookmarksView.render(model.state.bookmarks);
+};
+
 const init = function() {
+    bookmarksView.addHandlerRender(controlBookmarks);
     recipeView.addHandlerRender(controlRecipes);
     recipeView.addHandlerUpdateServings(controlServings);
     recipeView.addHandlerAddBookmark(controlAddBookmark);
